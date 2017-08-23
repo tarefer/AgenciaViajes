@@ -9,11 +9,11 @@ package com.modelo;
  * @author fernando.montes
  */
 public class Aerolinea {
-    private int id_Aerolinea;
-    private String nombre_Aerolinea;
-    private String numero_vuelo;
+    private int id_aerolinea;
+    private String nombre;
+    private String num_vuelo;
     private String destino;
-    private String numero_asiento;
+    private String num_asiento;
     private int telefono;
     private String sito_web;
     private String notas;
@@ -21,28 +21,28 @@ public class Aerolinea {
     public Aerolinea() {
     }
 
-    public int getId_Aerolinea() {
-        return id_Aerolinea;
+    public int getId_aerolinea() {
+        return id_aerolinea;
     }
 
-    public void setId_Aerolinea(int id_Aerolinea) {
-        this.id_Aerolinea = id_Aerolinea;
+    public void setId_aerolinea(int id_aerolinea) {
+        this.id_aerolinea = id_aerolinea;
     }
 
-    public String getNombre_Aerolinea() {
-        return nombre_Aerolinea;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_Aerolinea(String nombre_Aerolinea) {
-        this.nombre_Aerolinea = nombre_Aerolinea;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getNumero_vuelo() {
-        return numero_vuelo;
+    public String getNum_vuelo() {
+        return num_vuelo;
     }
 
-    public void setNumero_vuelo(String numero_vuelo) {
-        this.numero_vuelo = numero_vuelo;
+    public void setNum_vuelo(String num_vuelo) {
+        this.num_vuelo = num_vuelo;
     }
 
     public String getDestino() {
@@ -53,12 +53,12 @@ public class Aerolinea {
         this.destino = destino;
     }
 
-    public String getNumero_asiento() {
-        return numero_asiento;
+    public String getNum_asiento() {
+        return num_asiento;
     }
 
-    public void setNumero_asiento(String numero_asiento) {
-        this.numero_asiento = numero_asiento;
+    public void setNum_asiento(String num_asiento) {
+        this.num_asiento = num_asiento;
     }
 
     public int getTelefono() {
@@ -84,6 +84,9 @@ public class Aerolinea {
     public void setNotas(String notas) {
         this.notas = notas;
     }
+    
+    
+
     
     
     
