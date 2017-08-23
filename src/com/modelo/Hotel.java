@@ -19,7 +19,7 @@ public class Hotel {
 
     public Hotel() {
     }
-
+    
     public int getId_hotel() {
         return id_hotel;
     }
