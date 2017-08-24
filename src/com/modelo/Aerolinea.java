@@ -13,8 +13,8 @@ public class Aerolinea {
     private String nombre;
     private String num_vuelo;
     private String destino;
-    private String num_asiento;
-    private int telefono;
+    private int num_asiento;
+    private String telefono;
     private String sito_web;
     private String notas;
 
@@ -53,19 +53,19 @@ public class Aerolinea {
         this.destino = destino;
     }
 
-    public String getNum_asiento() {
+    public int getNum_asiento() {
         return num_asiento;
     }
 
-    public void setNum_asiento(String num_asiento) {
+    public void setNum_asiento(int num_asiento) {
         this.num_asiento = num_asiento;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
