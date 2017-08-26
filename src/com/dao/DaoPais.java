@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Nombre de la clase: 
- * Fecha: 
+ * Nombre de la clase: DaoPais
+ * Fecha: 25/08/2017
  * Versión: 1.0
- * Copyright:   
+ * Copyright: Fernando Montes
  * @author fernando.montes
  */
 public class DaoPais extends Conexion{
