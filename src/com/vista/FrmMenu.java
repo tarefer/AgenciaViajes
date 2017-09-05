@@ -37,6 +37,7 @@ public class FrmMenu extends javax.swing.JFrame {
         reservas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Administracion - Agencia de Viajes");
 
         administracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/settings-gears.png"))); // NOI18N
         administracion.setMnemonic('f');
