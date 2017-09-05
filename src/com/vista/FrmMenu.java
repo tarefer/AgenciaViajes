@@ -34,6 +34,7 @@ public class FrmMenu extends javax.swing.JFrame {
         hoteles = new javax.swing.JMenuItem();
         paquetes = new javax.swing.JMenuItem();
         aerolineas = new javax.swing.JMenuItem();
+        reservas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +71,10 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         administracion.add(aerolineas);
+
+        reservas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/calendar.png"))); // NOI18N
+        reservas.setText("Reservas");
+        administracion.add(reservas);
 
         menuBar.add(administracion);
 
@@ -144,6 +149,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem informacionCliente;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem paquetes;
+    private javax.swing.JMenuItem reservas;
     // End of variables declaration//GEN-END:variables
 
 }
