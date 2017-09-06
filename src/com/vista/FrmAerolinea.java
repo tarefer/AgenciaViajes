@@ -7,7 +7,9 @@ package com.vista;
 
 import com.dao.DaoAerolinea;
 import com.modelo.Aerolinea;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +22,7 @@ public class FrmAerolinea extends javax.swing.JInternalFrame {
      */
     public FrmAerolinea() {
         initComponents();
+        tablaA();
     }
     Aerolinea ae = new Aerolinea();
     DaoAerolinea daoa = new DaoAerolinea();
@@ -120,6 +123,11 @@ public class FrmAerolinea extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         jLabel8.setText("ID:");
@@ -224,6 +232,7 @@ public class FrmAerolinea extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        tablaA();
     }//GEN-LAST:event_btnInsertarMouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
@@ -237,6 +246,10 @@ public class FrmAerolinea extends javax.swing.JInternalFrame {
     private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
         limpiar();
     }//GEN-LAST:event_btnLimpiarMouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        llenarTabla();
+    }//GEN-LAST:event_jTable1MouseClicked
     public void llenarTabla(){
         int fila = this.jTable1.getSelectedRow();
         this.jTxtId.setText(String.valueOf(this.jTable1.getValueAt(fila, 0)));
@@ -278,7 +291,7 @@ public class FrmAerolinea extends javax.swing.JInternalFrame {
             if(sn == 0){
                 daoa.modificarAerolinea(ae);
                 JOptionPane.showMessageDialog(rootPane, "Aerolina ha sido actualizada", "Confirmando", JOptionPane.INFORMATION_MESSAGE);
-                //tablaA();
+                tablaA();
                 limpiar();
             }
         } catch (Exception ex) {
@@ -292,16 +305,43 @@ public class FrmAerolinea extends javax.swing.JInternalFrame {
         try {
             ae.setId_aerolinea(Integer.parseInt(this.jTxtId.getText()));
             int sn = JOptionPane.showConfirmDialog(rootPane, "Desea Eliminar Aerolinea", "Eliminando Aerolinea", JOptionPane.YES_NO_OPTION);
-            if(sn == 0){
+            if(sn == 0){                                 
                 daoa.eliminarAerolinea(ae);
                 JOptionPane.showMessageDialog(rootPane, "Eliminando con exito", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
-                //tablaA():=
+                tablaA();
                 limpiar();
             }else{
                 limpiar();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.toString(), "Error en el try-catch de la funcion eliminar", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
+    public void tablaA(){
+        String[] col = {"Código","Nombre"," Numero de Vuelo","Destion","Numero de Asientos","Telefono","Sitio Web","Notas"};
+        Object[] obj = new Object[8];
+        DefaultTableModel tabla = new DefaultTableModel(null, col);
+        List ls;
+        try {
+            ls = daoa.mostrarAerolinea();
+            for(int i = 0; i < ls.size(); i++){
+                ae = (Aerolinea) ls.get(i);
+                obj[0] = ae.getId_aerolinea();
+                obj[1] = ae.getNombre();
+                obj[2] = ae.getNum_vuelo();
+                obj[3] = ae.getDestino();
+                obj[4] = ae.getNum_asiento();
+                obj[5] = ae.getTelefono();
+                obj[6] = ae.getSito_web();
+                obj[7] = ae.getNotas();
+                tabla.addRow(obj);
+            }
+            ls = daoa.mostrarAerolinea();
+            this.jTable1.setModel(tabla);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al mostrar los datos... " + e.toString());
         }
     }
 
