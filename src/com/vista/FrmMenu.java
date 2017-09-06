@@ -100,7 +100,10 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aerolineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aerolineasActionPerformed
-        System.exit(0);
+        //System.exit(0);
+        FrmAerolinea a = new FrmAerolinea();
+        this.desktopPane.add(a);
+        a.setVisible(true);
     }//GEN-LAST:event_aerolineasActionPerformed
 
     private void paquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paquetesActionPerformed
