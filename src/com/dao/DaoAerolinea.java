@@ -71,7 +71,7 @@ public class DaoAerolinea extends Conexion{
     public void modificarAerolinea(Aerolinea ae) throws Exception{
         try {
             this.conectar();
-            String sql = "UPDATE aerolinea SET nombre=?, num_vuelo=?, destino=?, num_asiento=?, telefono=?,sitio_web=?, notas=? WHERE id_Aerolinea=?";
+            String sql = "UPDATE aerolinea SET nombre=?, num_vuelo=?, destino=?, num_asiento=?, telefono=?,sitio_web=?, notas=? WHERE id_aerolinea=?";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setString(1, ae.getNombre());
             pre.setString(2, ae.getNum_vuelo());

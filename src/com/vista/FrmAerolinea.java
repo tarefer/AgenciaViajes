@@ -132,6 +132,8 @@ public class FrmAerolinea extends javax.swing.JInternalFrame {
 
         jLabel8.setText("ID:");
 
+        jTxtId.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -286,6 +288,7 @@ public class FrmAerolinea extends javax.swing.JInternalFrame {
             ae.setDestino(this.jTxtDestino.getText());
             ae.setNum_asiento(Integer.parseInt(this.jSAsientos.getValue().toString()));
             ae.setTelefono(this.jTxtTelefono.getText());
+            ae.setSito_web(this.jTxtSitioWeb.getText());
             ae.setNotas(this.jTxtNotas.getText());
             int sn = JOptionPane.showConfirmDialog(rootPane, "Aerolinea modificada con exito", "Modificar Aerolinea", JOptionPane.YES_NO_OPTION);
             if(sn == 0){
