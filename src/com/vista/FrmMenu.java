@@ -75,6 +75,11 @@ public class FrmMenu extends javax.swing.JFrame {
 
         reservas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/calendar.png"))); // NOI18N
         reservas.setText("Reservas");
+        reservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservasActionPerformed(evt);
+            }
+        });
         administracion.add(reservas);
 
         menuBar.add(administracion);
@@ -109,6 +114,12 @@ public class FrmMenu extends javax.swing.JFrame {
     private void paquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paquetesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_paquetesActionPerformed
+
+    private void reservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasActionPerformed
+        FrmReserva r = new FrmReserva();
+        this.desktopPane.add(r);
+        r.setVisible(true);
+    }//GEN-LAST:event_reservasActionPerformed
 
     /**
      * @param args the command line arguments
