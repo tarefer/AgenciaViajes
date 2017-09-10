@@ -278,6 +278,13 @@ public class FrmAerolinea extends javax.swing.JInternalFrame {
     }
     
     public void limpiar(){
+        this.jTxtId.setText("");
+        this.jTxtNombre.setText("");
+        this.jTxtNumVuelo.setText("");
+        this.jTxtNotas.setText("");
+        this.jTxtSitioWeb.setText("");
+        this.jTxtTelefono.setText("");
+        this.jTxtDestino.setText("");
         
     }
     public void modificar(){

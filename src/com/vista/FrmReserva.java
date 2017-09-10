@@ -5,9 +5,12 @@
  */
 package com.vista;
 
+import com.conexion.Conexion;
 import com.dao.DaoReserva;
 import com.modelo.Reserva;
 import static java.awt.image.ImageObserver.PROPERTIES;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -119,6 +122,11 @@ public class FrmReserva extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jCIdPaquete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCIdPaquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCIdPaqueteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,6 +226,10 @@ public class FrmReserva extends javax.swing.JInternalFrame {
     private void jBtnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLimpiarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnLimpiarMouseClicked
+
+    private void jCIdPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCIdPaqueteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCIdPaqueteActionPerformed
      public void llenarTabla(){
         int fila = this.jTable1.getSelectedRow();
         this.jTxtId.setText(String.valueOf(this.jTable1.getValueAt(fila, 0)));
@@ -308,7 +320,7 @@ public class FrmReserva extends javax.swing.JInternalFrame {
          }
          
      }
-
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnEliminar;
     private javax.swing.JButton jBtnInsertar;

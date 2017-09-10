@@ -51,6 +51,11 @@ public class FrmMenu extends javax.swing.JFrame {
         hoteles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/round-hotel-sign.png"))); // NOI18N
         hoteles.setMnemonic('s');
         hoteles.setText("Hoteles");
+        hoteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hotelesActionPerformed(evt);
+            }
+        });
         administracion.add(hoteles);
 
         paquetes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/package.png"))); // NOI18N
@@ -120,6 +125,12 @@ public class FrmMenu extends javax.swing.JFrame {
         this.desktopPane.add(r);
         r.setVisible(true);
     }//GEN-LAST:event_reservasActionPerformed
+
+    private void hotelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hotelesActionPerformed
+        FrmHoteles h = new FrmHoteles();
+        this.desktopPane.add(h);
+        h.setVisible(true);
+    }//GEN-LAST:event_hotelesActionPerformed
 
     /**
      * @param args the command line arguments

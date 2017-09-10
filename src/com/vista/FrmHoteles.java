@@ -5,7 +5,11 @@
  */
 package com.vista;
 
+import com.dao.DaoHotel;
 import com.modelo.Hotel;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,9 +22,12 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
      */
     public FrmHoteles() {
         initComponents();
+        tablaH();
     }
     
     Hotel h = new Hotel();
+    DaoHotel daoh = new DaoHotel();
+    
     
 
     /**
@@ -37,8 +44,6 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jTxtTelefono = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTxtDireccion = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jSHabitacion = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
@@ -49,6 +54,9 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
         btnLimpiar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jTxtId = new javax.swing.JTextField();
+        jTxtDireccion = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -62,17 +70,23 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Dirección:");
 
-        jTxtDireccion.setColumns(20);
-        jTxtDireccion.setRows(5);
-        jScrollPane1.setViewportView(jTxtDireccion);
-
         jLabel4.setText("Habitaciones:");
 
         jLabel5.setText("Sitio Web:");
 
         btnInsertar.setText("Insertar");
+        btnInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertarMouseClicked(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
+        btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarMouseClicked(evt);
+            }
+        });
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -80,8 +94,18 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLimpiarMouseClicked(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,31 +118,42 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
+
+        jLabel6.setText("ID:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(97, 97, 97)
+                .addComponent(btnInsertar)
+                .addGap(18, 18, 18)
+                .addComponent(btnModificar)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminar)
+                .addGap(18, 18, 18)
+                .addComponent(btnLimpiar)
+                .addContainerGap(346, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnInsertar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTxtNombre)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTxtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(jTxtDireccion))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -129,14 +164,18 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTxtTelefono)
                                 .addComponent(jSHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTxtSitioWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(25, Short.MAX_VALUE))
-            .addComponent(jScrollPane2)
+                            .addComponent(jTxtSitioWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTxtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,24 +183,25 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
                     .addComponent(jTxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jTxtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jSHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTxtSitioWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                            .addComponent(jLabel5))))
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInsertar)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
                     .addComponent(btnLimpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -172,6 +212,125 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void btnInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertarMouseClicked
+        try {
+            insertar();
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        tablaH();
+    }//GEN-LAST:event_btnInsertarMouseClicked
+
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+        modificar();
+    }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        eliminar();
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarMouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        llenarTabla();
+    }//GEN-LAST:event_jTable1MouseClicked
+    
+    public void llenarTabla(){
+        int fila = this.jTable1.getSelectedRow();
+        this.jTxtId.setText(String.valueOf(this.jTable1.getValueAt(fila, 0)));
+        this.jTxtNombre.setText(String.valueOf(this.jTable1.getValueAt(fila, 1)));
+        this.jTxtDireccion.setText(String.valueOf(this.jTable1.getValueAt(fila, 2)));
+        this.jTxtTelefono.setText(String.valueOf(this.jTable1.getValueAt(fila, 3)));
+        this.jSHabitacion.setValue(this.jTable1.getValueAt(fila, 4));
+        this.jTxtSitioWeb.setText(String.valueOf(this.jTable1.getValueAt(fila, 5)));
+        
+    }
+    public void limpiar(){
+        this.jTxtId.setText("");
+        this.jTxtNombre.setText("");
+        this.jTxtDireccion.setText("");
+        this.jSHabitacion.setValue(0);
+        this.jTxtTelefono.setText("");
+        this.jTxtSitioWeb.setText("");
+       
+    }
+    public void insertar() throws Exception{
+        h.setId_hotel(PROPERTIES);
+        h.setNombre(this.jTxtNombre.getText());
+        h.setDireccion(this.jTxtDireccion.getText());
+        h.setTelefono(this.jTxtTelefono.getText());
+        h.setNum_habitaciones(Integer.parseInt(this.jSHabitacion.getValue().toString()));
+        h.setSitio_web(this.jTxtSitioWeb.getText());
+        daoh.insertarHotel(h);
+        JOptionPane.showMessageDialog(null, "Datos insertados con Exito", "Insertando Datos", 3);
+        daoh.mostrarHotel();
+    }
+ 
+    
+    public void modificar() {
+        try {
+            h.setId_hotel(Integer.parseInt(this.jTxtId.getText()));
+            h.setNombre(this.jTxtNombre.getText());
+            h.setDireccion(this.jTxtDireccion.getText());
+            h.setTelefono(this.jTxtTelefono.getText());
+            h.setNum_habitaciones(Integer.parseInt(this.jSHabitacion.getValue().toString()));
+            h.setSitio_web(this.jTxtSitioWeb.getText());
+            int sn = JOptionPane.showConfirmDialog(rootPane, "Hotel Modificado con exito", "Modificando Hotel", JOptionPane.YES_NO_OPTION);
+            if(sn == 0){
+                daoh.modificarHotel(h);
+                JOptionPane.showMessageDialog(rootPane, "Hotel ha sido actualizada", "Confirmando", JOptionPane.INFORMATION_MESSAGE);
+                tablaH();
+                limpiar();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void eliminar() {
+        try {
+
+            h.setId_hotel(Integer.parseInt(this.jTxtId.getText()));
+            int sn = JOptionPane.showConfirmDialog(rootPane, "Desea Eliminar Hotel", "Eliminando Hotel", JOptionPane.YES_NO_OPTION);
+            if (sn == 0) {
+                daoh.eliminarHotel(h);
+                JOptionPane.showMessageDialog(rootPane, "Eliminando con exito", "Confirmacion", JOptionPane.INFORMATION_MESSAGE);
+                tablaH();
+                limpiar();
+            } else {
+                limpiar();   
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.toString(), "Error en el try-catch de la funcion eliminar", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void tablaH() {
+        String[] col = {"ID", "Nombre", "Direccion", "Telefono", "Numero de Habitaciones", "Sitio Web"};
+        Object[] obj = new Object[6];
+        DefaultTableModel tabla = new DefaultTableModel(null, col);
+        List ls;
+        try {
+            ls = daoh.mostrarHotel();
+            for (int i = 0; i < ls.size(); i++) {
+                h = (Hotel) ls.get(i);
+                obj[0] = h.getId_hotel();
+                obj[1] = h.getNombre();
+                obj[2] = h.getDireccion();
+                obj[3] = h.getTelefono();
+                obj[4] = h.getNum_habitaciones();
+                obj[5] = h.getSitio_web();
+                tabla.addRow(obj);
+            }
+            ls = daoh.mostrarHotel();
+            this.jTable1.setModel(tabla);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al mostrar los datos... " + e.toString());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
@@ -183,11 +342,12 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSpinner jSHabitacion;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTxtDireccion;
+    private javax.swing.JTextField jTxtDireccion;
+    private javax.swing.JTextField jTxtId;
     private javax.swing.JTextField jTxtNombre;
     private javax.swing.JTextField jTxtSitioWeb;
     private javax.swing.JTextField jTxtTelefono;
