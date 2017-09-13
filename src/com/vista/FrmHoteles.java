@@ -74,6 +74,7 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Sitio Web:");
 
+        btnInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/save.png"))); // NOI18N
         btnInsertar.setText("Insertar");
         btnInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -81,6 +82,7 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
             }
         });
 
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/rotate.png"))); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -93,6 +95,7 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/x-button.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -100,6 +103,7 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
             }
         });
 
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -127,6 +131,8 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
 
         jLabel6.setText("ID:");
 
+        jTxtId.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +146,7 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
                 .addComponent(btnEliminar)
                 .addGap(18, 18, 18)
                 .addComponent(btnLimpiar)
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
             .addComponent(jScrollPane2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -171,7 +177,7 @@ public class FrmHoteles extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTxtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
