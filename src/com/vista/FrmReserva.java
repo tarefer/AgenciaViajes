@@ -80,6 +80,7 @@ public class FrmReserva extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Paquete:");
 
+        jBtnInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/save.png"))); // NOI18N
         jBtnInsertar.setText("Insertar");
         jBtnInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -87,6 +88,7 @@ public class FrmReserva extends javax.swing.JInternalFrame {
             }
         });
 
+        jBtnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/rotate.png"))); // NOI18N
         jBtnModificar.setText("Modificar");
         jBtnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -94,6 +96,7 @@ public class FrmReserva extends javax.swing.JInternalFrame {
             }
         });
 
+        jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/x-button.png"))); // NOI18N
         jBtnEliminar.setText("Eliminar");
         jBtnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -101,6 +104,7 @@ public class FrmReserva extends javax.swing.JInternalFrame {
             }
         });
 
+        jBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush.png"))); // NOI18N
         jBtnLimpiar.setText("Limpiar");
         jBtnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -166,13 +170,13 @@ public class FrmReserva extends javax.swing.JInternalFrame {
                         .addComponent(jBtnEliminar)
                         .addGap(18, 18, 18)
                         .addComponent(jBtnLimpiar)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTxtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
