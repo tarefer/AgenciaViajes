@@ -67,6 +67,11 @@ public class FrmMenu extends javax.swing.JFrame {
         paquetes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/package.png"))); // NOI18N
         paquetes.setMnemonic('a');
         paquetes.setText("Paquetes");
+        paquetes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paquetesMouseClicked(evt);
+            }
+        });
         paquetes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paquetesActionPerformed(evt);
@@ -95,6 +100,11 @@ public class FrmMenu extends javax.swing.JFrame {
 
         Usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/users.png"))); // NOI18N
         Usuarios.setText("Usuarios");
+        Usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UsuariosMouseClicked(evt);
+            }
+        });
         Usuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsuariosActionPerformed(evt);
@@ -132,7 +142,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_aerolineasActionPerformed
 
     private void paquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paquetesActionPerformed
-        // TODO add your handling code here:
+        FrmPaquetes pa = new FrmPaquetes();
+        this.desktopPane.add(pa);
+        pa.setVisible(true);
     }//GEN-LAST:event_paquetesActionPerformed
 
     private void reservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasActionPerformed
@@ -148,14 +160,22 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_hotelesActionPerformed
 
     private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsuariosActionPerformed
-
-    private void administracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_administracionMouseClicked
         FrmUsuario u = new FrmUsuario();
         this.desktopPane.add(u);
         u.setVisible(true);
+    }//GEN-LAST:event_UsuariosActionPerformed
+
+    private void administracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_administracionMouseClicked
+        
     }//GEN-LAST:event_administracionMouseClicked
+
+    private void paquetesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paquetesMouseClicked
+        
+    }//GEN-LAST:event_paquetesMouseClicked
+
+    private void UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuariosMouseClicked
+        
+    }//GEN-LAST:event_UsuariosMouseClicked
 
     /**
      * @param args the command line arguments
