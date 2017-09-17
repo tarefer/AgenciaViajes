@@ -35,6 +35,7 @@ public class FrmMenu extends javax.swing.JFrame {
         paquetes = new javax.swing.JMenuItem();
         aerolineas = new javax.swing.JMenuItem();
         reservas = new javax.swing.JMenuItem();
+        Usuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administracion - Agencia de Viajes");
@@ -42,6 +43,11 @@ public class FrmMenu extends javax.swing.JFrame {
         administracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/settings-gears.png"))); // NOI18N
         administracion.setMnemonic('f');
         administracion.setText("Administracion");
+        administracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                administracionMouseClicked(evt);
+            }
+        });
 
         informacionCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/check-in-desk.png"))); // NOI18N
         informacionCliente.setMnemonic('o');
@@ -86,6 +92,15 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         administracion.add(reservas);
+
+        Usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/users.png"))); // NOI18N
+        Usuarios.setText("Usuarios");
+        Usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsuariosActionPerformed(evt);
+            }
+        });
+        administracion.add(Usuarios);
 
         menuBar.add(administracion);
 
@@ -132,6 +147,16 @@ public class FrmMenu extends javax.swing.JFrame {
         h.setVisible(true);
     }//GEN-LAST:event_hotelesActionPerformed
 
+    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsuariosActionPerformed
+
+    private void administracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_administracionMouseClicked
+        FrmUsuario u = new FrmUsuario();
+        this.desktopPane.add(u);
+        u.setVisible(true);
+    }//GEN-LAST:event_administracionMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -168,6 +193,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Usuarios;
     private javax.swing.JMenu administracion;
     private javax.swing.JMenuItem aerolineas;
     private javax.swing.JDesktopPane desktopPane;

@@ -84,7 +84,7 @@ public void modificarUsuario(Usuario usuario) throws Exception{
 public void eliminarUsuario(Usuario usuario) throws Exception{
         try{
             this.conectar();
-            String sql = "DELETE FROM hotel WHERE WHERE id_hotel=?";
+            String sql = "DELETE FROM usuario WHERE id_usuario=?";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setInt(1,usuario.getId_usuario());
             pre.executeUpdate();
