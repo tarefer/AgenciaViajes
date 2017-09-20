@@ -85,6 +85,10 @@ public class Paquete {
         this.id_hotel = id_hotel;
     }
     
+    @Override
+    public String toString(){
+        return this.getDescripcion();
+    }
     
 
 }

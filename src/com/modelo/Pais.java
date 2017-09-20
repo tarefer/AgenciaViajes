@@ -58,6 +58,10 @@ public class Pais {
         this.restricciones = restricciones;
     }
     
+    @Override
+    public String toString(){
+        return this.getNombre();
+    }
     
 
 }

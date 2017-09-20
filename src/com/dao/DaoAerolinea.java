@@ -106,4 +106,29 @@ public class DaoAerolinea extends Conexion{
         }
     }
     
+    public  ArrayList <Aerolinea> obtenerAerolineas() throws Exception{
+        ArrayList <Aerolinea> listaAerolinea = new ArrayList<Aerolinea>();
+        Aerolinea a;
+        ResultSet res;
+        try {
+            this.conectar();
+            String sql = "SELECT * FROM aerolinea";
+            PreparedStatement pre = this.getCon().prepareCall(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                a = new Aerolinea();
+                a.setId_aerolinea(res.getInt("id_aerolinea"));
+                a.setNombre(res.getString("nombre"));
+                listaAerolinea.add(a);
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+        return listaAerolinea;
+        
+    }
+
+    
 }
