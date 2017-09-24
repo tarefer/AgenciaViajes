@@ -2,6 +2,7 @@
 package com.dao;
 
 import com.conexion.Conexion;
+import com.modelo.Paquete;
 import com.modelo.Reserva;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,7 +48,7 @@ public class DaoReserva extends Conexion {
                 Reserva re = new Reserva();
                 re.setId_reserva(res.getInt("id_reserva"));
                 re.setNum_reserva(res.getString("num_reserva"));
-                re.setFecha_salida("fecha_salida");
+                re.setFecha_salida(res.getString("fecha_salida"));
                 re.setFecha_ingreso(res.getString("fecha_ingreso"));
                 re.setNum_dia(res.getInt("num_dia"));
                 re.setTipo_reserva(res.getString("tipo_reserva"));
@@ -75,8 +76,11 @@ public class DaoReserva extends Conexion {
             pre.setString(5, re.getTipo_reserva());
             pre.setInt(6, re.getId_paquete());
             pre.setInt(7, re.getId_reserva());
+            //System.out.println(re.getId_paquete());
+            //System.out.println(re.getId_reserva());
             pre.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
             throw e;
         }finally{
             this.desconectar();
@@ -98,5 +102,7 @@ public class DaoReserva extends Conexion {
             this.desconectar();
         }
     }
+    
+    
 
 }

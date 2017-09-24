@@ -68,6 +68,11 @@ public class FrmMenu extends javax.swing.JFrame {
         paquetes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/package.png"))); // NOI18N
         paquetes.setMnemonic('a');
         paquetes.setText("Paquetes");
+        paquetes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paquetesMouseClicked(evt);
+            }
+        });
         paquetes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paquetesActionPerformed(evt);
@@ -152,7 +157,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_aerolineasActionPerformed
 
     private void paquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paquetesActionPerformed
-        // TODO add your handling code here:
+        FrmPaquetes pa = new FrmPaquetes();
+        this.desktopPane.add(pa);
+        pa.setVisible(true);
     }//GEN-LAST:event_paquetesActionPerformed
 
     private void reservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservasActionPerformed
@@ -174,23 +181,35 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuariosActionPerformed
 
     private void administracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_administracionMouseClicked
+<<<<<<< HEAD
      
     }//GEN-LAST:event_administracionMouseClicked
 
     private void jClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jClienteMouseClicked
        
     }//GEN-LAST:event_jClienteMouseClicked
+=======
+        
+    }//GEN-LAST:event_administracionMouseClicked
+
+    private void paquetesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paquetesMouseClicked
+        
+    }//GEN-LAST:event_paquetesMouseClicked
+>>>>>>> 1ba08ddbe1a479abcd4e26750995e1c6c956b1ef
 
     private void UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuariosMouseClicked
         
     }//GEN-LAST:event_UsuariosMouseClicked
 
+<<<<<<< HEAD
     private void jClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClienteActionPerformed
         FrmCliente cli = new FrmCliente();
         this.desktopPane.add(cli);
         cli.setVisible(true);
     }//GEN-LAST:event_jClienteActionPerformed
 
+=======
+>>>>>>> 1ba08ddbe1a479abcd4e26750995e1c6c956b1ef
     /**
      * @param args the command line arguments
      */

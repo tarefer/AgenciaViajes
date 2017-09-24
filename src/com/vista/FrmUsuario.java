@@ -194,6 +194,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                         .addGap(228, 228, 228)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+<<<<<<< HEAD
                         .addComponent(jtxtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
@@ -205,6 +206,20 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jBtnLimpiar)))
                 .addContainerGap(64, Short.MAX_VALUE))
+=======
+                        .addComponent(jtxtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(116, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 111, Short.MAX_VALUE)
+                .addComponent(jBtnAgregar)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnActualizar)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnEliminar)
+                .addGap(18, 18, 18)
+                .addComponent(jBtnLimpiar)
+                .addGap(102, 102, 102))
+>>>>>>> 1ba08ddbe1a479abcd4e26750995e1c6c956b1ef
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +258,11 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jPwUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+=======
+                .addGap(18, 18, 18)
+>>>>>>> 1ba08ddbe1a479abcd4e26750995e1c6c956b1ef
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBtnEliminar)
@@ -251,7 +270,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBtnAgregar)
                         .addComponent(jBtnActualizar)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

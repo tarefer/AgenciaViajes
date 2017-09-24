@@ -92,5 +92,30 @@ public class DaoPais extends Conexion{
             this.desconectar();
         }
     }
+    
+    //ArrayList de Paquete
+    public  ArrayList <Pais> obtenerPaises() throws Exception{
+        ArrayList <Pais> lista = new ArrayList<Pais>();
+        Pais pai;
+        ResultSet res;
+        try {
+            this.conectar();
+            String sql = "SELECT * FROM pais";
+            PreparedStatement pre = this.getCon().prepareCall(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                pai = new Pais();
+                pai.setId_pais(res.getInt("id_pais"));
+                pai.setNombre(res.getString("nombre"));
+                lista.add(pai);
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+        return lista;
+        
+    } 
 
 }

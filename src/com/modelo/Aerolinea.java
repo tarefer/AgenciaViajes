@@ -85,6 +85,10 @@ public class Aerolinea {
         this.notas = notas;
     }
     
+    @Override
+    public String toString(){
+        return this.getNombre();
+    }
     
 
     

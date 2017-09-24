@@ -107,4 +107,31 @@ public void eliminarCliente(Cliente cliente) throws Exception{
             this.desconectar();
         }
     }
+
+//Obteniendo registros de Cliente para llenar jCombox
+    public  ArrayList <Cliente> obtenerClientes() throws Exception{
+        ArrayList <Cliente> lista = new ArrayList<Cliente>();
+        Cliente c;
+        ResultSet res;
+        try {
+            this.conectar();
+            String sql = "SELECT id_cliente, nombres, apellidos "
+                    + "FROM cliente;";
+            PreparedStatement pre = this.getCon().prepareCall(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                c = new Cliente();
+                c.setId_cliente(res.getInt("id_cliente"));
+                c.setNombres(res.getString("nombres"));
+                c.setApellidos(res.getString("apellidos"));
+                lista.add(c);
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+        return lista;
+        
+    } 
 }

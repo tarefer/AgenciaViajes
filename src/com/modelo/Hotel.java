@@ -68,6 +68,9 @@ public class Hotel {
         this.sitio_web = sitio_web;
     }
     
-    
+    @Override
+    public String toString(){
+        return this.getNombre();
+    }
 
 }

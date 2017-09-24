@@ -95,4 +95,28 @@ public class DaoHotel extends Conexion{
             this.desconectar();
         }
     }
+    //ArrayList de Paquete
+    public  ArrayList <Hotel> obtenerHoteles() throws Exception{
+        ArrayList <Hotel> lista = new ArrayList<Hotel>();
+        Hotel h;
+        ResultSet res;
+        try {
+            this.conectar();
+            String sql = "SELECT * FROM hotel";
+            PreparedStatement pre = this.getCon().prepareCall(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                h = new Hotel();
+                h.setId_hotel(res.getInt("id_hotel"));
+                h.setNombre(res.getString("nombre"));
+                lista.add(h);
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+        return lista;
+        
+    } 
 }

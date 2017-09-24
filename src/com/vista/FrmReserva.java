@@ -6,11 +6,14 @@
 package com.vista;
 
 import com.conexion.Conexion;
+import com.dao.DaoPaquete;
 import com.dao.DaoReserva;
+import com.modelo.Paquete;
 import com.modelo.Reserva;
 import static java.awt.image.ImageObserver.PROPERTIES;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,9 +29,26 @@ public class FrmReserva extends javax.swing.JInternalFrame {
      */
     public FrmReserva() {
         initComponents();
+        jCIdPaquete.removeAllItems();
+        //System.out.println("entra frm reserva");
+        ArrayList <Paquete> lista = new ArrayList <Paquete>();
+        try {
+            lista = daopa.obtenerPaquetes();
+            //System.out.println("tamano lista: "+lista.size());
+            for(Paquete p: lista){
+                //System.out.println("Elemento: "+s);
+                //jCIdPaquete.
+                jCIdPaquete.addItem(p);
+            }
+            //jCIdPaquete.addItem(lista);
+        } catch (Exception e) {
+            //System.out.println("error");
+        }
+        tablaR();
     }
     Reserva re = new Reserva();
     DaoReserva daor = new DaoReserva();
+    DaoPaquete daopa = new DaoPaquete();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,7 +78,7 @@ public class FrmReserva extends javax.swing.JInternalFrame {
         jBtnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jCIdPaquete = new javax.swing.JComboBox<>();
+        jCIdPaquete = new javax.swing.JComboBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -67,6 +87,8 @@ public class FrmReserva extends javax.swing.JInternalFrame {
         setTitle("Formulario - Registro de Reserva");
 
         jLabel1.setText("ID:");
+
+        jTxtId.setEnabled(false);
 
         jLabel2.setText("Numero de Reserva:");
 
@@ -123,9 +145,14 @@ public class FrmReserva extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        jCIdPaquete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCIdPaquete.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCIdPaquete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCIdPaqueteActionPerformed(evt);
@@ -217,6 +244,7 @@ public class FrmReserva extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        tablaR();
     }//GEN-LAST:event_jBtnInsertarMouseClicked
 
     private void jBtnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnModificarMouseClicked
@@ -228,12 +256,16 @@ public class FrmReserva extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnEliminarMouseClicked
 
     private void jBtnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnLimpiarMouseClicked
-        // TODO add your handling code here:
+        limpiar();
     }//GEN-LAST:event_jBtnLimpiarMouseClicked
 
     private void jCIdPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCIdPaqueteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCIdPaqueteActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        llenarTabla();
+    }//GEN-LAST:event_jTable1MouseClicked
      public void llenarTabla(){
         int fila = this.jTable1.getSelectedRow();
         this.jTxtId.setText(String.valueOf(this.jTable1.getValueAt(fila, 0)));
@@ -247,33 +279,67 @@ public class FrmReserva extends javax.swing.JInternalFrame {
     }
      
      public void insertar() throws Exception{
-         re.setId_reserva(ERROR);
-         re.setNum_reserva(this.jTxtNumReserva.getText());
-         re.setFecha_salida(this.jTxtFechaSalida.getText());
-         re.setFecha_ingreso(this.jTxtFechaIngreso.getText());
-         re.setNum_dia(Integer.parseInt(this.jTxtNumDias.getText()));
-         re.setTipo_reserva(this.jTxtTipoReserva.getText());
-         re.setId_paquete(Integer.parseInt(this.jCIdPaquete.getSelectedItem().toString()));
-         daor.insertarReserva(re);
-         JOptionPane.showMessageDialog(null, "Datos insertados con exito", "Insertando Datos", 3);
-         daor.mostrarReserva();
+         if(isStringInt(this.jTxtNumDias.getText()) && this.jTxtNumReserva.getText() != ""){
+             re.setId_reserva(ERROR);
+             re.setNum_reserva(this.jTxtNumReserva.getText());
+             re.setFecha_salida(this.jTxtFechaSalida.getText());
+             re.setFecha_ingreso(this.jTxtFechaIngreso.getText());
+             re.setNum_dia(Integer.parseInt(this.jTxtNumDias.getText()));
+             re.setTipo_reserva(this.jTxtTipoReserva.getText());
+             Object item = jCIdPaquete.getSelectedItem();
+             int selectedId = ((Paquete) item).getId_paquete();
+             //System.out.println("ID SELECCIONADP: " + selectedId);
+             re.setId_paquete(selectedId);
+             //re.setId_paquete(Integer.parseInt(this.jCIdPaquete.getSelectedItem().toString()));
+             daor.insertarReserva(re);
+             JOptionPane.showMessageDialog(null, "Datos insertados con exito", "Insertando Datos", 3);
+             daor.mostrarReserva();
+         }else{
+             //JOptionPane.showInternalConfirmDialog(rootPane, "Valores nulos o inconrrectos", "Validando Datos", 1);
+             JOptionPane.showMessageDialog(rootPane, "Valores nulos o inconrrectos", "Validando Datos", 2);
+         }
+         
     }
+    
      
+    public boolean isStringInt(String s) {
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
+    
+    public void limpiar(){
+        this.jTxtId.setText("");
+        this.jTxtNumReserva.setText("");
+        this.jTxtFechaIngreso.setText("");
+        this.jTxtFechaSalida.setText("");
+        this.jTxtNumDias.setText("");
+        this.jTxtTipoReserva.setText("");
+        
+        
+    }
      public void modificar(){
          try {
-             re.setId_reserva(ERROR);
+             re.setId_reserva(Integer.parseInt(this.jTxtId.getText()));
              re.setNum_reserva(this.jTxtNumReserva.getText());
              re.setFecha_salida(this.jTxtFechaIngreso.getText());
              re.setFecha_ingreso(this.jTxtFechaIngreso.getText());
              re.setNum_dia(Integer.parseInt(this.jTxtNumDias.getText()));
              re.setTipo_reserva(this.jTxtTipoReserva.getText());
-             re.setId_paquete(Integer.parseInt(this.jCIdPaquete.getSelectedItem().toString()));
+             Object item = jCIdPaquete.getSelectedItem();
+             int selectedId = ((Paquete) item).getId_paquete();
+             re.setId_paquete(selectedId);
+             //System.out.println("ID SELECCIONADP: " + selectedId);
+             //re.setId_paquete(Integer.parseInt(this.jCIdPaquete.getSelectedItem().toString()));
              int sn = JOptionPane.showConfirmDialog(rootPane, "Resrva modificada con exito", "Modificando Reserva", JOptionPane.YES_NO_OPTION);
              if(sn == 0){
                  daor.modificarReserva(re);
                  JOptionPane.showMessageDialog(rootPane, "Reserva ha sido actualizada", "Confirmando", JOptionPane.INFORMATION_MESSAGE);
                  tablaR();
-                 //limpiar();
+                 limpiar();
              }
          } catch (Exception ex) {
              ex.printStackTrace();
@@ -330,7 +396,7 @@ public class FrmReserva extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBtnInsertar;
     private javax.swing.JButton jBtnLimpiar;
     private javax.swing.JButton jBtnModificar;
-    private javax.swing.JComboBox<String> jCIdPaquete;
+    private javax.swing.JComboBox jCIdPaquete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

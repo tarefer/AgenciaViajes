@@ -22,7 +22,7 @@ public class Conexion {
     public void conectar() throws Exception{
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_viajes?user=root&password=11980789");    //Cambiar por el respectivo puerto, usuario y password
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_viajes?user=tare&password=toor");    //Cambiar por el respectivo puerto, usuario y password
         } catch (Exception e) {
             throw e;
         }
