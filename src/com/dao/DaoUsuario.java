@@ -73,6 +73,7 @@ public void modificarUsuario(Usuario usuario) throws Exception{
             pre.setString(4, usuario.getNombre());
             pre.setString(5, usuario.getApellido());
             pre.setString(6, usuario.getCorreo());
+            pre.setInt(7, usuario.getId_usuario());
             pre.executeUpdate();
         } catch (Exception e){
             throw e;

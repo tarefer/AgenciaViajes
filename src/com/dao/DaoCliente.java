@@ -18,7 +18,7 @@ public class DaoCliente extends Conexion {
 public void insertarCliente(Cliente cliente)throws Exception {
         try{
             this.conectar();
-            String sql = "INSERT INTO clliente (nombres, apellidos, genero, telefono, correo, nacionalidad, tipo_documento, num_documento,direccion,id_departamento) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO clliente (nombres, apellidos, genero, telefono, correo, nacionalidad, tipo_documento, num_documento,direccion,id_departamento) VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setString(1, cliente.getNombres());
             pre.setString(2, cliente.getApellidos());
@@ -85,6 +85,7 @@ public void modificarCliente(Cliente cliente) throws Exception{
             pre.setInt(8, cliente.getNum_documento());
             pre.setString(9, cliente.getDireccion());
             pre.setInt(10, cliente.getId_departamento());
+            pre.setInt(11, cliente.getId_cliente());
             pre.executeUpdate();
         } catch (Exception e){
             throw e;
@@ -96,7 +97,7 @@ public void modificarCliente(Cliente cliente) throws Exception{
 public void eliminarCliente(Cliente cliente) throws Exception{
         try{
             this.conectar();
-            String sql = "DELETE FROM clliente WHERE WHERE id_cliente=?";
+            String sql = "DELETE FROM clliente WHERE id_cliente=?";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setInt(1,cliente.getId_cliente());
             pre.executeUpdate();

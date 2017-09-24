@@ -20,7 +20,7 @@ public class DaoAerolinea extends Conexion{
     public void insertarAerolinea(Aerolinea ae) throws Exception{
         try {
             this.conectar();
-            String sql = "INSERT INTO aerolinea (nombre, num_vuelo, destino, num_asiento, telefono,sitio_web, notas)"
+            String sql = "INSERT INTO aerolinea (nombre, num_vuelo, destino, num_asiento, telefono,sito_web, notas)"
                     + "VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setString(1, ae.getNombre());
@@ -54,7 +54,7 @@ public class DaoAerolinea extends Conexion{
                 a.setDestino(res.getString("destino"));
                 a.setNum_asiento(res.getInt("num_asiento"));
                 a.setTelefono(res.getString("telefono"));
-                a.setSito_web(res.getString("sitio_web"));
+                a.setSito_web(res.getString("sito_web"));
                 a.setNotas(res.getString("notas"));
                 listaAerolinea.add(a);
                 
@@ -71,7 +71,7 @@ public class DaoAerolinea extends Conexion{
     public void modificarAerolinea(Aerolinea ae) throws Exception{
         try {
             this.conectar();
-            String sql = "UPDATE aerolinea SET nombre=?, num_vuelo=?, destino=?, num_asiento=?, telefono=?,sitio_web=?, notas=? WHERE id_aerolinea=?";
+            String sql = "UPDATE aerolinea SET nombre=?, num_vuelo=?, destino=?, num_asiento=?, telefono=?,sito_web=?, notas=? WHERE id_aerolinea=?";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setString(1, ae.getNombre());
             pre.setString(2, ae.getNum_vuelo());

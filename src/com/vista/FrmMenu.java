@@ -36,6 +36,7 @@ public class FrmMenu extends javax.swing.JFrame {
         aerolineas = new javax.swing.JMenuItem();
         reservas = new javax.swing.JMenuItem();
         Usuarios = new javax.swing.JMenuItem();
+        jCliente = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administracion - Agencia de Viajes");
@@ -95,12 +96,31 @@ public class FrmMenu extends javax.swing.JFrame {
 
         Usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/users.png"))); // NOI18N
         Usuarios.setText("Usuarios");
+        Usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UsuariosMouseClicked(evt);
+            }
+        });
         Usuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsuariosActionPerformed(evt);
             }
         });
         administracion.add(Usuarios);
+
+        jCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/check-in-desk.png"))); // NOI18N
+        jCliente.setText("Cliente");
+        jCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jClienteMouseClicked(evt);
+            }
+        });
+        jCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jClienteActionPerformed(evt);
+            }
+        });
+        administracion.add(jCliente);
 
         menuBar.add(administracion);
 
@@ -148,14 +168,28 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_hotelesActionPerformed
 
     private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsuariosActionPerformed
-
-    private void administracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_administracionMouseClicked
         FrmUsuario u = new FrmUsuario();
         this.desktopPane.add(u);
         u.setVisible(true);
+    }//GEN-LAST:event_UsuariosActionPerformed
+
+    private void administracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_administracionMouseClicked
+     
     }//GEN-LAST:event_administracionMouseClicked
+
+    private void jClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jClienteMouseClicked
+       
+    }//GEN-LAST:event_jClienteMouseClicked
+
+    private void UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuariosMouseClicked
+        
+    }//GEN-LAST:event_UsuariosMouseClicked
+
+    private void jClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClienteActionPerformed
+        FrmCliente cli = new FrmCliente();
+        this.desktopPane.add(cli);
+        cli.setVisible(true);
+    }//GEN-LAST:event_jClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +233,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem hoteles;
     private javax.swing.JMenuItem informacionCliente;
+    private javax.swing.JMenuItem jCliente;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem paquetes;
     private javax.swing.JMenuItem reservas;

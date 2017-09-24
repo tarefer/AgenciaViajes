@@ -22,6 +22,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
      */
     public FrmUsuario() {
         initComponents();
+        tablaA();
     }
     
     Usuario user = new Usuario();
@@ -113,20 +114,23 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
 
         jComboAcceso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Cliente", "Proveedor" }));
 
-        jBtnAgregar.setText("Agregar");
+        jBtnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/save.png"))); // NOI18N
+        jBtnAgregar.setText("Insertar");
         jBtnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnAgregarMouseClicked(evt);
             }
         });
 
-        jBtnActualizar.setText("Actualizar");
+        jBtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/rotate.png"))); // NOI18N
+        jBtnActualizar.setText("Modificar");
         jBtnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnActualizarMouseClicked(evt);
             }
         });
 
+        jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/x-button.png"))); // NOI18N
         jBtnEliminar.setText("Eliminar");
         jBtnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,6 +138,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        jBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/brush.png"))); // NOI18N
         jBtnLimpiar.setText("Limpiar");
         jBtnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -199,7 +204,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                         .addComponent(jBtnEliminar)
                         .addGap(18, 18, 18)
                         .addComponent(jBtnLimpiar)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,7 +243,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jPwUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBtnEliminar)
@@ -292,10 +297,10 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
         this.jtxtIdUsuario.setText(String.valueOf(this.jTableUsuarios.getValueAt(fila, 0)));
         this.jTxtUsuarioNombre.setText(String.valueOf(this.jTableUsuarios.getValueAt(fila, 1)));
         this.jTxtApellidoUsuario.setText(String.valueOf(this.jTableUsuarios.getValueAt(fila, 2)));
-        this.jTxtCorreoUsuario.setText(String.valueOf(this.jTableUsuarios.getValueAt(fila, 3)));
-        this.jTxtUserNameUsuario.setText(String.valueOf(this.jTableUsuarios.getValueAt(fila, 4)));
-        //this.jPwUsuario.setText(String.valueOf(this.jTableUsuarios.getValueAt(fila, 5)));
-        this.jComboAcceso.setSelectedItem(String.valueOf(this.jTableUsuarios.getValueAt(fila, 5)));
+        this.jTxtCorreoUsuario.setText(String.valueOf(this.jTableUsuarios.getValueAt(fila, 5)));
+        this.jTxtUserNameUsuario.setText(String.valueOf(this.jTableUsuarios.getValueAt(fila, 3)));
+        this.jPwUsuario.setText(String.valueOf(this.jTableUsuarios.getValueAt(fila, 6)));
+        this.jComboAcceso.setSelectedItem(String.valueOf(this.jTableUsuarios.getValueAt(fila, 4)));
     }
     
     public void insertar() throws Exception
