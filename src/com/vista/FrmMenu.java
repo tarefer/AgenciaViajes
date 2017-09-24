@@ -36,6 +36,7 @@ public class FrmMenu extends javax.swing.JFrame {
         aerolineas = new javax.swing.JMenuItem();
         reservas = new javax.swing.JMenuItem();
         Usuarios = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administracion - Agencia de Viajes");
@@ -112,6 +113,15 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         administracion.add(Usuarios);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/specialist-user.png"))); // NOI18N
+        jMenuItem1.setText("Clientes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        administracion.add(jMenuItem1);
+
         menuBar.add(administracion);
 
         setJMenuBar(menuBar);
@@ -177,6 +187,12 @@ public class FrmMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_UsuariosMouseClicked
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        FrmCliente c = new FrmCliente();
+        this.desktopPane.add(c);
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -219,6 +235,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem hoteles;
     private javax.swing.JMenuItem informacionCliente;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem paquetes;
     private javax.swing.JMenuItem reservas;
